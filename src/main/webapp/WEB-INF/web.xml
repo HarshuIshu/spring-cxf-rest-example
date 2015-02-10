@@ -4,7 +4,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>WEB-INF/spring-cxf-rest-example.xml</param-value>
+        <param-value>WEB-INF/web-context.xml</param-value>
     </context-param>
 
     <listener>
@@ -13,9 +13,7 @@
 
     <servlet>
         <servlet-name>CXFServlet</servlet-name>
-        <servlet-class>
-            org.apache.cxf.transport.servlet.CXFServlet
-        </servlet-class>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 

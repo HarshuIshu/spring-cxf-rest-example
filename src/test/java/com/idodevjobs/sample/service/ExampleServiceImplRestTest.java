@@ -18,6 +18,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:test-context.xml"})
+//@ContextConfiguration(locations = {"classpath:spring-cxf-rest-context.xml"})
 public class ExampleServiceImplRestTest {
 
     private RestTemplate restTemplate = new RestTemplate();
@@ -31,26 +32,15 @@ public class ExampleServiceImplRestTest {
         assertThat(entity.getStatusCode(), equalTo(OK));
     }
 
-    //    @Rule
-//    public ExpectedException exception = ExpectedException.none();
-//
-//    @Test
-//    public void doStuffThrowsIndexOutOfBoundsException() {
-//
-//        exception.expect(HttpServerErrorException.class);
-//        exception.expect();
-//        restTemplate.getForEntity(URL + "2", ExampleModel.class);
-//    }
-
     @Test
-    public void testServiceRoute() {
+    public void testWithRestassured() {
         when().get(URL+"1").then().assertThat().statusCode(HttpStatus.NOT_IMPLEMENTED.value());
     }
-    @Test
-    public void testCustomException2() {
-        ResponseEntity<Object> response = restTemplate.getForEntity(URL + "1", Object.class);
-        assertThat(response.getStatusCode(), is(HttpStatus.NOT_IMPLEMENTED));
-    }
+//    @Test
+//    public void testCustomException2() {
+//        ResponseEntity<Object> response = restTemplate.getForEntity(URL + "1", Object.class);
+//        assertThat(response.getStatusCode(), is(HttpStatus.NOT_IMPLEMENTED));
+//    }
 
     @Test
     public void testCustomException() {

@@ -12,7 +12,12 @@
 
     <context:component-scan base-package="com.idodevjobs"/>
 
-    <jaxrs:server id="exampleCxfServer" address="/">
+    <bean id="jaxrsServerAddress" class="java.lang.String">
+        <constructor-arg value="/"/>
+    </bean>
+
+    <jaxrs:server id="exampleCxfServer" address="#{jaxrsServerAddress}">
+    <!--<jaxrs:server id="exampleCxfServer" address="http://localhost:8080/spring-cxf-rest-example/services/">-->
         <jaxrs:serviceBeans>
             <ref bean="exampleService"/>
         </jaxrs:serviceBeans>
