@@ -16,8 +16,9 @@
         <constructor-arg value="/"/>
     </bean>
 
+    <!-- address is configured dynamically since it must be changed in the tests and we want to use this config for the testsetup-->
+    <!--there is probably a more elegant solution, that I dit nod find, that would not require to make changes in the config just for tests-->
     <jaxrs:server id="exampleCxfServer" address="#{jaxrsServerAddress}">
-    <!--<jaxrs:server id="exampleCxfServer" address="http://localhost:8080/spring-cxf-rest-example/services/">-->
         <jaxrs:serviceBeans>
             <ref bean="exampleService"/>
         </jaxrs:serviceBeans>
