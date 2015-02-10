@@ -13,6 +13,7 @@
     <name>spring-cxf-rest-example</name>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.0.0.RELEASE</spring.version>
         <cxf.version>3.0.0</cxf.version>
         <jackson.version>2.0.1</jackson.version>
