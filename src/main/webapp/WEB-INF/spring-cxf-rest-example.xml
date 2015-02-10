@@ -5,12 +5,12 @@
        xmlns:cxf="http://cxf.apache.org/core"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-                        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-                        http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
-                        http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+        http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
-    <context:component-scan base-package="com.idodevjobs" />
+    <context:component-scan base-package="com.idodevjobs"/>
 
     <jaxrs:server id="exampleCxfServer" address="/">
         <jaxrs:serviceBeans>
@@ -23,7 +23,11 @@
             <cxf:logging/>
         </jaxrs:features>
         <jaxrs:providers>
-            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.ClientExceptionMapper"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.ServerExceptionMapper"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.ThrowableMapper"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.CustomExceptionMapper"/>
         </jaxrs:providers>
     </jaxrs:server>
 

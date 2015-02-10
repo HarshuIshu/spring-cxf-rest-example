@@ -24,9 +24,11 @@
         </jaxrs:features>
         <jaxrs:providers>
             <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.ClientExceptionMapper"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.ServerExceptionMapper"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.ThrowableMapper"/>
+            <bean class="com.idodevjobs.sample.exception.mapper.CustomExceptionMapper"/>
         </jaxrs:providers>
     </jaxrs:server>
-
-    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
 
 </beans>
