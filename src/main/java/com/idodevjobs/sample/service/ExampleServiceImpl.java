@@ -14,4 +14,10 @@ public class ExampleServiceImpl implements ExampleService {
         }
         return new ExampleModel("example", 1001);
     }
+
+    @Override
+    public void post(ExampleModel exampleModel) {
+
+        System.out.println("Posted " + exampleModel);
+    }
 }

@@ -1,6 +1,7 @@
 package com.idodevjobs.sample.service;
 
 import com.idodevjobs.sample.model.ExampleModel;
+import com.jayway.restassured.http.ContentType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import static com.jayway.restassured.RestAssured.when;
+import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -34,7 +35,29 @@ public class ExampleServiceImplRestTest {
 
     @Test
     public void testWithRestassured() {
-        when().get(URL+"1").then().assertThat().statusCode(HttpStatus.NOT_IMPLEMENTED.value());
+        given()
+            .log().everything()
+        .expect()
+            .statusCode(HttpStatus.NOT_IMPLEMENTED.value())
+            .log().all()
+        .when()
+            .get(URL + "1");
+//            .log().all().when().get(URL+"1").then().assertThat().statusCode(HttpStatus.NOT_IMPLEMENTED.value());
+    }
+    @Test
+    public void testPost() {
+        given()
+                .contentType(ContentType.JSON)
+//          .header(acceptJson)
+            .body("{\"string\":\"example\",\"anInt\":1001}")
+            .log().everything()
+//          .queryParam("id", 2)
+        .expect()
+            .statusCode(204)
+//            .log().ifError()
+            .log().all()
+                .when()
+        .post(URL);
     }
 //    @Test
 //    public void testCustomException2() {
